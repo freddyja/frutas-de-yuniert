@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frutas de Yuniert – Fresh Tropical Fruits Miami</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mango:        #F5A623;
+    --mango-deep:   #D4851A;
+    --mango-light:  #FEF6E8;
+    --green:        #2E7D32;
+    --green-mid:    #43A047;
+    --green-light:  #E8F5E9;
+    --teal:         #00796B;
+    --red:          #C62828;
+    --charcoal:     #1A2212;
+    --warm-white:   #FDFCF8;
+    --gray-100:     #F4F1EA;
+    --gray-200:     #E5E0D4;
+    --gray-500:     #8A8070;
+    --gray-700:     #4A4030;
+    --green-wa:     #25D366;
+    --green-wa-dk:  #1DA851;
+    --radius:       14px;
+    --shadow:       0 4px 24px rgba(0,0,0,0.07);
+    --shadow-lg:    0 8px 40px rgba(0,0,0,0.13);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--warm-white); color: var(--charcoal); }
+
+  /* ── LANGUAGE BAR ── */
+  .lang-bar {
+    background: var(--charcoal);
+    padding: 10px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap;
+  }
+  .lang-switcher { display: flex; gap: 6px; }
+  .lang-btn {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.22);
+    color: rgba(255,255,255,0.7);
+    padding: 5px 12px; border-radius: 20px;
+    cursor: pointer; font-size: 12px; font-family: 'Inter', sans-serif;
+    font-weight: 500; display: flex; align-items: center; gap: 5px; transition: all .2s;
+  }
+  .lang-btn img { width: 16px; height: 12px; border-radius: 2px; }
+  .lang-btn.active, .lang-btn:hover { background: var(--mango); border-color: var(--mango); color: #fff; }
+  .contact-bar { display: flex; align-items: center; gap: 14px; }
+  .contact-bar a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 13px; display: flex; align-items: center; gap: 5px; transition: color .2s;
+  }
+  .contact-bar a:hover { color: var(--mango); }
+  .wa-pill {
+    background: var(--green-wa) !important; color: #fff !important;
+    padding: 5px 12px; border-radius: 20px; font-weight: 600; font-size: 12px;
+  }
+  .wa-pill:hover { background: var(--green-wa-dk) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(150deg, #0D2B0D 0%, #1B4D1B 30%, #2E7D32 65%, #F5A623 130%);
+    padding: 64px 24px 88px; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 0%, rgba(245,166,35,0.28) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.09); border: 1px solid rgba(245,166,35,0.45);
+    color: var(--mango); font-size: 12px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 8vw, 82px); font-weight: 900; color: #fff;
+    line-height: 1.05; margin-bottom: 18px; position: relative;
+  }
+  .hero h1 span { color: var(--mango); }
+  .hero-sub {
+    font-size: clamp(14px, 2vw, 17px); color: rgba(255,255,255,0.78);
+    max-width: 520px; margin: 0 auto 32px; line-height: 1.65;
+  }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .hero-pill {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.88); font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px;
+  }
+
+  /* ── PROMO ── */
+  .promo-banner {
+    background: linear-gradient(90deg, var(--green), var(--teal));
+    color: #fff; text-align: center; padding: 13px 24px;
+    font-size: 14px; font-weight: 600;
+  }
+
+  /* ── FRESHNESS STRIP ── */
+  .fresh-strip {
+    background: var(--mango-light);
+    border-bottom: 2px solid var(--mango);
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 24px; padding: 12px 24px;
+  }
+  .fresh-item { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--mango-deep); }
+
+  /* ── LAYOUT ── */
+  .main {
+    max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px;
+    display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start;
+  }
+  @media (max-width: 820px) { .main { grid-template-columns: 1fr; } }
+
+  /* ── STEP CARD ── */
+  .step-card {
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 28px; margin-bottom: 20px; border: 1px solid var(--gray-200);
+  }
+  .step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .step-num {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--green);
+    color: #fff; font-weight: 700; font-size: 15px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .step-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; }
+  .step-hint { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+
+  /* ── FRUIT TABLE ── */
+  .fruit-table { width: 100%; border-collapse: collapse; }
+  .fruit-table thead tr { background: var(--green-light); }
+  .fruit-table th {
+    text-align: left; font-size: 11px; font-weight: 700; color: var(--green);
+    text-transform: uppercase; letter-spacing: .07em; padding: 10px 14px;
+  }
+  .fruit-table th:last-child, .fruit-table td:last-child { text-align: right; }
+  .fruit-row { border-bottom: 1px solid var(--gray-100); transition: background .15s; }
+  .fruit-row:hover { background: var(--mango-light); }
+  .fruit-row td { padding: 12px 14px; vertical-align: middle; }
+  .fruit-name { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .fruit-desc { font-size: 11px; color: var(--gray-500); margin-top: 2px; }
+  .fruit-price { font-weight: 700; font-size: 13px; color: var(--mango-deep); }
+  .qty-control { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+  .qty-btn {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid var(--gray-200); background: #fff;
+    font-size: 16px; font-weight: 700; cursor: pointer; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green); transition: all .15s; font-family: 'Inter', sans-serif;
+  }
+  .qty-btn:hover { background: var(--green); border-color: var(--green); color: #fff; }
+  .qty-val { font-size: 14px; font-weight: 700; min-width: 20px; text-align: center; }
+  .unit-label { font-size: 11px; color: var(--gray-500); }
+
+  /* ── OPTIONS ── */
+  .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px,1fr)); gap: 10px; }
+  .option-card {
+    border: 2px solid var(--gray-200); border-radius: 10px; padding: 14px;
+    cursor: pointer; transition: all .2s; background: var(--gray-100); position: relative;
+  }
+  .option-card:hover { border-color: var(--mango); background: var(--mango-light); }
+  .option-card.selected {
+    border-color: var(--green); background: var(--green-light);
+    box-shadow: 0 0 0 3px rgba(46,125,50,0.15);
+  }
+  .option-card.selected::after {
+    content: '✓'; position: absolute; top: 8px; right: 10px;
+    width: 20px; height: 20px; background: var(--green); color: #fff;
+    border-radius: 50%; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 20px; text-align: center;
+  }
+  .option-emoji { font-size: 26px; margin-bottom: 8px; display: block; }
+  .option-name { font-weight: 600; font-size: 13px; }
+  .option-desc { font-size: 11px; color: var(--gray-500); margin-top: 3px; line-height: 1.4; }
+
+  /* ── FORM ── */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+  .field-full { grid-column: 1/-1; }
+  input, textarea, select {
+    width: 100%; border: 2px solid var(--gray-200); border-radius: 8px;
+    padding: 10px 13px; font-family: 'Inter', sans-serif; font-size: 13px;
+    color: var(--charcoal); background: var(--warm-white); outline: none; transition: border .2s;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--mango); }
+  input::placeholder, textarea::placeholder { color: var(--gray-500); }
+  textarea { resize: vertical; min-height: 80px; }
+  label { display: block; font-size: 11px; font-weight: 600; color: var(--gray-700); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
+  .field { display: flex; flex-direction: column; }
+
+  /* ── CART ── */
+  .cart-panel {
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200); position: sticky; top: 20px; overflow: hidden;
+  }
+  .cart-header {
+    background: var(--charcoal); padding: 18px 22px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cart-title { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; font-weight: 700; }
+  .cart-count {
+    background: var(--mango); color: #fff; border-radius: 50%;
+    width: 24px; height: 24px; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cart-body { padding: 20px 22px; }
+  .cart-empty { text-align: center; padding: 28px 0; color: var(--gray-500); }
+  .cart-empty-icon { font-size: 38px; margin-bottom: 10px; }
+  .cart-empty p { font-size: 13px; line-height: 1.5; }
+  .cart-items { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+  .cart-item {
+    background: var(--gray-100); border-radius: 8px; padding: 9px 12px;
+    display: flex; justify-content: space-between; align-items: start; gap: 8px;
+  }
+  .cart-item-label { font-size: 12px; font-weight: 500; line-height: 1.4; flex: 1; }
+  .cart-item-price { font-size: 13px; font-weight: 700; color: var(--mango-deep); white-space: nowrap; }
+  .cart-total {
+    border-top: 2px solid var(--gray-200); padding-top: 14px;
+    display: flex; justify-content: space-between; align-items: center; font-weight: 700;
+    font-size: 18px; margin-bottom: 16px;
+  }
+  .cart-total-label { color: var(--gray-700); font-size: 14px; }
+  .btn-whatsapp {
+    width: 100%; padding: 15px;
+    background: linear-gradient(135deg, var(--green-wa), #1A9E50);
+    border: none; border-radius: 12px; color: #fff; font-family: 'Inter', sans-serif;
+    font-weight: 700; font-size: 14px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    transition: all .2s; text-decoration: none; letter-spacing: .01em;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+  }
+  .btn-whatsapp:hover {
+    background: linear-gradient(135deg, #1DA851, #148040);
+    transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,0.45);
+  }
+  .wa-icon { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+  .btn-clear {
+    background: none; border: none; color: var(--gray-500); font-size: 11px;
+    cursor: pointer; text-decoration: underline; font-family: 'Inter', sans-serif;
+    margin-top: 8px; display: block; text-align: right;
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    background: linear-gradient(150deg, #0D2B0D, #1B4D1B 60%, #2E7D32);
+    padding: 60px 24px; text-align: center; color: #fff;
+  }
+  .about-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px,4vw,40px); margin-bottom: 16px; }
+  .about-section h2 span { color: var(--mango); }
+  .about-section p { max-width: 600px; margin: 0 auto 32px; color: rgba(255,255,255,0.78); font-size: 15px; line-height: 1.7; }
+  .feature-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .feature-pill {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.88); padding: 10px 18px; border-radius: 30px;
+    font-size: 13px; font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  footer { background: #0D1A0D; padding: 28px 24px; text-align: center; color: rgba(255,255,255,0.45); font-size: 13px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 19px; color: var(--mango); margin-bottom: 6px; }
+  .footer-addr { margin-bottom: 10px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 14px; }
+  .footer-links a { color: var(--green-wa); text-decoration: none; }
+  .footer-links a:hover { text-decoration: underline; }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.28); }
+
+  /* ── WA FLOAT ── */
+  .wa-float {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--green-wa); color: #fff;
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.5); z-index: 999; transition: all .2s;
+    animation: wa-pulse 2.5s ease-in-out infinite;
+  }
+  .wa-float:hover { background: var(--green-wa-dk); transform: scale(1.1); }
+  @keyframes wa-pulse {
+    0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45); }
+    50%      { box-shadow: 0 4px 32px rgba(37,211,102,0.8); }
+  }
+
+  /* ── LANG VISIBILITY ── */
+  [data-lang] { display: none; }
+  .lang-en [data-lang="en"], .lang-es [data-lang="es"], .lang-pt [data-lang="pt"] { display: inline; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--gray-100); }
+  ::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 3px; }
+</style>
+</head>
+<body class="lang-en" id="app">
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en',this)">
+      <img src="https://flagcdn.com/20x15/us.png" alt="EN"> English
+    </button>
+    <button class="lang-btn" onclick="setLang('es',this)">
+      <img src="https://flagcdn.com/20x15/es.png" alt="ES"> Español
+    </button>
+    <button class="lang-btn" onclick="setLang('pt',this)">
+      <img src="https://flagcdn.com/20x15/br.png" alt="PT"> Português
+    </button>
+  </div>
+  <div class="contact-bar">
+    <a href="tel:+13053017163">📞 (305) 301-7163</a>
+    <a href="https://wa.me/13053017163" class="wa-pill" target="_blank">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="white" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.553 4.103 1.522 5.835L.057 23.776a.5.5 0 0 0 .626.607l6.091-1.456A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.812 9.812 0 0 1-5.006-1.367l-.36-.213-3.724.891.908-3.63-.233-.372A9.79 9.79 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🌴 Miami, FL · Fresh Daily · Cosechado Fresco</div>
+  <h1>Frutas de<br><span>Yuniert</span></h1>
+  <p class="hero-sub">
+    <span data-lang="en">Sun-ripened mangoes, coconuts & tropical fruits — delivered fresh to your door in Miami</span>
+    <span data-lang="es">Mangos maduros al sol, cocos y frutas tropicales — entregados frescos a tu puerta en Miami</span>
+    <span data-lang="pt">Mangas maduras ao sol, cocos e frutas tropicais — entregues fresquinhos na sua porta em Miami</span>
+  </p>
+  <div class="hero-pills">
+    <span class="hero-pill">🥭 <span data-lang="en">Fresh Mangoes</span><span data-lang="es">Mangos Frescos</span><span data-lang="pt">Mangas Frescas</span></span>
+    <span class="hero-pill">🥥 <span data-lang="en">Coconuts</span><span data-lang="es">Cocos</span><span data-lang="pt">Cocos</span></span>
+    <span class="hero-pill">🌴 <span data-lang="en">Tropical Fruits</span><span data-lang="es">Frutas Tropicales</span><span data-lang="pt">Frutas Tropicais</span></span>
+    <span class="hero-pill">🚚 <span data-lang="en">Home Delivery</span><span data-lang="es">Entrega a Dom.</span><span data-lang="pt">Entrega em Casa</span></span>
+    <span class="hero-pill">⚖️ <span data-lang="en">Sold by the Pound</span><span data-lang="es">Vendido por Libra</span><span data-lang="pt">Vendido por Libra</span></span>
+  </div>
+</div>
+
+<!-- PROMO -->
+<div class="promo-banner">
+  <span data-lang="en">🥭 Buy 5 lbs of any fruit — get 1 lb FREE! Call or WhatsApp to claim 🥥</span>
+  <span data-lang="es">🥭 ¡Compra 5 libras de cualquier fruta y lleva 1 libra GRATIS! Llama o escribe por WhatsApp 🥥</span>
+  <span data-lang="pt">🥭 Compre 5 libras de qualquer fruta — leve 1 libra GRÁTIS! Chame pelo WhatsApp 🥥</span>
+</div>
+
+<!-- FRESHNESS STRIP -->
+<div class="fresh-strip">
+  <div class="fresh-item">🌅 <span data-lang="en">Picked Fresh Daily</span><span data-lang="es">Cosechado Diariamente</span><span data-lang="pt">Colhido Todo Dia</span></div>
+  <div class="fresh-item">🚫 <span data-lang="en">No Pesticides</span><span data-lang="es">Sin Pesticidas</span><span data-lang="pt">Sem Pesticidas</span></div>
+  <div class="fresh-item">🌴 <span data-lang="en">Locally Sourced</span><span data-lang="es">Origen Local</span><span data-lang="pt">Origem Local</span></div>
+  <div class="fresh-item">💯 <span data-lang="en">100% Natural</span><span data-lang="es">100% Natural</span><span data-lang="pt">100% Natural</span></div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="form-col">
+
+    <!-- STEP 1: MANGOES -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">
+            🥭 <span data-lang="en">Mangoes</span><span data-lang="es">Mangos</span><span data-lang="pt">Mangas</span>
+          </div>
+          <div class="step-hint">
+            <span data-lang="en">Select variety & quantity in pounds</span>
+            <span data-lang="es">Elige la variedad y cantidad en libras</span>
+            <span data-lang="pt">Escolha a variedade e quantidade em libras</span>
+          </div>
+        </div>
+      </div>
+      <table class="fruit-table">
+        <thead>
+          <tr>
+            <th><span data-lang="en">Variety</span><span data-lang="es">Variedad</span><span data-lang="pt">Variedade</span></th>
+            <th><span data-lang="en">Price / lb</span><span data-lang="es">Precio / lb</span><span data-lang="pt">Preço / lb</span></th>
+            <th><span data-lang="en">Qty (lbs)</span><span data-lang="es">Cant. (lbs)</span><span data-lang="pt">Qtd. (lbs)</span></th>
+          </tr>
+        </thead>
+        <tbody id="mangoRows">
+          <tr class="fruit-row" data-fruit="Tommy Atkins Mango" data-price="1.99">
+            <td>
+              <div class="fruit-name">🥭 Tommy Atkins</div>
+              <div class="fruit-desc"><span data-lang="en">Classic sweet-tart, firm flesh</span><span data-lang="es">Clásico dulce-ácido, pulpa firme</span><span data-lang="pt">Clássico agridoce, polpa firme</span></div>
+            </td>
+            <td><div class="fruit-price">$1.99/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Honey Mango (Ataulfo)" data-price="2.49">
+            <td>
+              <div class="fruit-name">🥭 Honey / Ataulfo</div>
+              <div class="fruit-desc"><span data-lang="en">Velvety, ultra-sweet, no fiber</span><span data-lang="es">Cremoso, ultra dulce, sin fibra</span><span data-lang="pt">Cremoso, ultra-doce, sem fibra</span></div>
+            </td>
+            <td><div class="fruit-price">$2.49/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Kent Mango" data-price="2.29">
+            <td>
+              <div class="fruit-name">🥭 Kent</div>
+              <div class="fruit-desc"><span data-lang="en">Rich, juicy, minimal fiber</span><span data-lang="es">Rico, jugoso, poca fibra</span><span data-lang="pt">Rico, suculento, pouca fibra</span></div>
+            </td>
+            <td><div class="fruit-price">$2.29/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Keitt Mango" data-price="2.19">
+            <td>
+              <div class="fruit-name">🥭 Keitt</div>
+              <div class="fruit-desc"><span data-lang="en">Large, sweet, stays green when ripe</span><span data-lang="es">Grande, dulce, verde al madurar</span><span data-lang="pt">Grande, doce, verde quando maduro</span></div>
+            </td>
+            <td><div class="fruit-price">$2.19/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 2: COCONUTS -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">
+            🥥 <span data-lang="en">Coconuts</span><span data-lang="es">Cocos</span><span data-lang="pt">Cocos</span>
+          </div>
+          <div class="step-hint">
+            <span data-lang="en">Sold by unit — fresh & ready to drink or eat</span>
+            <span data-lang="es">Vendidos por unidad — frescos para tomar o comer</span>
+            <span data-lang="pt">Vendidos por unidade — frescos para beber ou comer</span>
+          </div>
+        </div>
+      </div>
+      <table class="fruit-table">
+        <thead>
+          <tr>
+            <th><span data-lang="en">Type</span><span data-lang="es">Tipo</span><span data-lang="pt">Tipo</span></th>
+            <th><span data-lang="en">Price / unit</span><span data-lang="es">Precio / unidad</span><span data-lang="pt">Preço / unidade</span></th>
+            <th><span data-lang="en">Qty</span><span data-lang="es">Cant.</span><span data-lang="pt">Qtd.</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fruit-row" data-fruit="Young Green Coconut" data-price="3.00" data-unit="ea">
+            <td>
+              <div class="fruit-name">🥥 <span data-lang="en">Young Green Coconut</span><span data-lang="es">Coco Verde Joven</span><span data-lang="pt">Coco Verde Jovem</span></div>
+              <div class="fruit-desc"><span data-lang="en">Fresh coconut water inside — ready to drink</span><span data-lang="es">Agua de coco fresca adentro — listo para tomar</span><span data-lang="pt">Água de coco fresca por dentro — pronto para beber</span></div>
+            </td>
+            <td><div class="fruit-price">$3.00/ea</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Mature Coconut (Dry)" data-price="2.50" data-unit="ea">
+            <td>
+              <div class="fruit-name">🥥 <span data-lang="en">Mature Coconut (Dry)</span><span data-lang="es">Coco Maduro (Seco)</span><span data-lang="pt">Coco Maduro (Seco)</span></div>
+              <div class="fruit-desc"><span data-lang="en">Thick white flesh — great for cooking & grating</span><span data-lang="es">Pulpa blanca gruesa — ideal para cocinar y rallar</span><span data-lang="pt">Polpa branca grossa — ótimo para cozinhar e ralar</span></div>
+            </td>
+            <td><div class="fruit-price">$2.50/ea</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 3: OTHER FRUITS -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">
+            🌴 <span data-lang="en">Other Tropical Fruits</span><span data-lang="es">Otras Frutas Tropicales</span><span data-lang="pt">Outras Frutas Tropicais</span>
+          </div>
+          <div class="step-hint">
+            <span data-lang="en">Sold by the pound unless noted</span>
+            <span data-lang="es">Vendido por libra salvo indicación</span>
+            <span data-lang="pt">Vendido por libra salvo indicação</span>
+          </div>
+        </div>
+      </div>
+      <table class="fruit-table">
+        <thead>
+          <tr>
+            <th><span data-lang="en">Fruit</span><span data-lang="es">Fruta</span><span data-lang="pt">Fruta</span></th>
+            <th><span data-lang="en">Price</span><span data-lang="es">Precio</span><span data-lang="pt">Preço</span></th>
+            <th><span data-lang="en">Qty (lbs)</span><span data-lang="es">Cant. (lbs)</span><span data-lang="pt">Qtd. (lbs)</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fruit-row" data-fruit="Papaya" data-price="1.49">
+            <td>
+              <div class="fruit-name">🍈 <span data-lang="en">Papaya</span><span data-lang="es">Papaya / Fruta Bomba</span><span data-lang="pt">Mamão</span></div>
+              <div class="fruit-desc"><span data-lang="en">Sweet, buttery, great for digestion</span><span data-lang="es">Dulce, cremosa, excelente para la digestión</span><span data-lang="pt">Doce, cremoso, ótimo para a digestão</span></div>
+            </td>
+            <td><div class="fruit-price">$1.49/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Mamey Sapote" data-price="3.49">
+            <td>
+              <div class="fruit-name">🟤 <span data-lang="en">Mamey Sapote</span><span data-lang="es">Mamey Colorado</span><span data-lang="pt">Mamey</span></div>
+              <div class="fruit-desc"><span data-lang="en">Cuban favorite — creamy, pumpkin-sweet</span><span data-lang="es">Favorito cubano — cremoso, dulce como calabaza</span><span data-lang="pt">Favorito cubano — cremoso, doce como abóbora</span></div>
+            </td>
+            <td><div class="fruit-price">$3.49/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Guanábana (Soursop)" data-price="4.99">
+            <td>
+              <div class="fruit-name">🌿 <span data-lang="en">Soursop (Guanábana)</span><span data-lang="es">Guanábana</span><span data-lang="pt">Graviola</span></div>
+              <div class="fruit-desc"><span data-lang="en">Tangy-sweet, creamy white pulp</span><span data-lang="es">Agridulce, pulpa blanca cremosa</span><span data-lang="pt">Agridoce, polpa branca cremosa</span></div>
+            </td>
+            <td><div class="fruit-price">$4.99/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Dragon Fruit" data-price="3.99">
+            <td>
+              <div class="fruit-name">🐉 <span data-lang="en">Dragon Fruit (Pitaya)</span><span data-lang="es">Pitaya / Fruta del Dragón</span><span data-lang="pt">Pitaya / Fruta do Dragão</span></div>
+              <div class="fruit-desc"><span data-lang="en">Light, refreshing, stunning colors</span><span data-lang="es">Ligera, refrescante, colores impresionantes</span><span data-lang="pt">Leve, refrescante, cores deslumbrantes</span></div>
+            </td>
+            <td><div class="fruit-price">$3.99/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Star Fruit (Carambola)" data-price="2.99">
+            <td>
+              <div class="fruit-name">⭐ <span data-lang="en">Star Fruit (Carambola)</span><span data-lang="es">Carambola</span><span data-lang="pt">Carambola</span></div>
+              <div class="fruit-desc"><span data-lang="en">Crisp, juicy, sweet-tart tropical gem</span><span data-lang="es">Crujiente, jugosa, joya tropical agridulce</span><span data-lang="pt">Crocante, suculenta, joia tropical agridoce</span></div>
+            </td>
+            <td><div class="fruit-price">$2.99/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Passion Fruit" data-price="5.99">
+            <td>
+              <div class="fruit-name">💜 <span data-lang="en">Passion Fruit (Parcha)</span><span data-lang="es">Parcha / Maracuyá</span><span data-lang="pt">Maracujá</span></div>
+              <div class="fruit-desc"><span data-lang="en">Intensely fragrant, sweet-tart seeds</span><span data-lang="es">Aroma intenso, semillas agridulces</span><span data-lang="pt">Intensamente aromático, sementes agridoces</span></div>
+            </td>
+            <td><div class="fruit-price">$5.99/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Lychee" data-price="4.49">
+            <td>
+              <div class="fruit-name">🔴 <span data-lang="en">Lychee</span><span data-lang="es">Lichi</span><span data-lang="pt">Lichia</span></div>
+              <div class="fruit-desc"><span data-lang="en">Floral, juicy white pearls</span><span data-lang="es">Floral, perlas blancas jugosas</span><span data-lang="pt">Floral, pérolas brancas suculentas</span></div>
+            </td>
+            <td><div class="fruit-price">$4.49/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="fruit-row" data-fruit="Plantains (Maduros)" data-price="0.99">
+            <td>
+              <div class="fruit-name">🍌 <span data-lang="en">Plantains (Maduros)</span><span data-lang="es">Plátanos Maduros</span><span data-lang="pt">Bananas Plantain Maduras</span></div>
+              <div class="fruit-desc"><span data-lang="en">Ripe & ready to fry or bake</span><span data-lang="es">Maduros listos para freír o hornear</span><span data-lang="pt">Maduras, prontas para fritar ou assar</span></div>
+            </td>
+            <td><div class="fruit-price">$0.99/lb</div></td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                <span class="qty-val">0</span>
+                <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 4: DELIVERY OR PICKUP -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">
+            <span data-lang="en">Delivery or Pickup?</span>
+            <span data-lang="es">¿Entrega o Recogida?</span>
+            <span data-lang="pt">Entrega ou Retirada?</span>
+          </div>
+        </div>
+      </div>
+      <div class="options-grid">
+        <div class="option-card" onclick="selectFulfillment(this,'delivery')">
+          <span class="option-emoji">🚚</span>
+          <div class="option-name"><span data-lang="en">Home Delivery</span><span data-lang="es">Entrega a Domicilio</span><span data-lang="pt">Entrega em Casa</span></div>
+          <div class="option-desc"><span data-lang="en">Miami-Dade area · We bring it to you</span><span data-lang="es">Área de Miami-Dade · Lo llevamos</span><span data-lang="pt">Área de Miami-Dade · Entregamos</span></div>
+        </div>
+        <div class="option-card" onclick="selectFulfillment(this,'pickup')">
+          <span class="option-emoji">📍</span>
+          <div class="option-name"><span data-lang="en">Local Pickup</span><span data-lang="es">Recogida Local</span><span data-lang="pt">Retirada Local</span></div>
+          <div class="option-desc"><span data-lang="en">Coordinate via WhatsApp for pickup time</span><span data-lang="es">Coordinar por WhatsApp</span><span data-lang="pt">Coordenar pelo WhatsApp</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5: YOUR INFO -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-title">
+            <span data-lang="en">Your Info</span>
+            <span data-lang="es">Tus Datos</span>
+            <span data-lang="pt">Seus Dados</span>
+          </div>
+          <div class="step-hint">
+            <span data-lang="en">So we know where to bring the fruits!</span>
+            <span data-lang="es">¡Para saber dónde llevar las frutas!</span>
+            <span data-lang="pt">Para sabermos onde entregar as frutas!</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label><span data-lang="en">Your Name</span><span data-lang="es">Tu Nombre</span><span data-lang="pt">Seu Nome</span></label>
+          <input id="custName" type="text" placeholder="Name / Nombre / Nome" oninput="updateCart()">
+        </div>
+        <div class="field">
+          <label><span data-lang="en">Phone</span><span data-lang="es">Teléfono</span><span data-lang="pt">Telefone</span></label>
+          <input id="custPhone" type="tel" placeholder="(305) 555-0000" oninput="updateCart()">
+        </div>
+        <div class="field field-full" id="addressField">
+          <label><span data-lang="en">Delivery Address</span><span data-lang="es">Dirección de Entrega</span><span data-lang="pt">Endereço de Entrega</span></label>
+          <input id="custAddress" type="text" placeholder="Miami, FL address" oninput="updateCart()">
+        </div>
+        <div class="field">
+          <label><span data-lang="en">Preferred Date</span><span data-lang="es">Fecha Preferida</span><span data-lang="pt">Data Preferida</span></label>
+          <input id="custDate" type="date" oninput="updateCart()">
+        </div>
+        <div class="field">
+          <label><span data-lang="en">Preferred Time</span><span data-lang="es">Hora Preferida</span><span data-lang="pt">Horário Preferido</span></label>
+          <input id="custTime" type="time" oninput="updateCart()">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6: NOTES -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div>
+          <div class="step-title">
+            <span data-lang="en">Special Requests</span>
+            <span data-lang="es">Solicitudes Especiales</span>
+            <span data-lang="pt">Pedidos Especiais</span>
+          </div>
+          <div class="step-hint">
+            <span data-lang="en">Ripeness preference, substitutions, anything…</span>
+            <span data-lang="es">Preferencia de madurez, sustituciones, lo que sea…</span>
+            <span data-lang="pt">Preferência de maturação, substituições, o que quiser…</span>
+          </div>
+        </div>
+      </div>
+      <textarea id="custNotes" oninput="updateCart()"
+        placeholder="e.g. Extra ripe mangoes / Mangos bien maduros / Mangas bem maduras…"></textarea>
+    </div>
+
+  </div><!-- /.form-col -->
+
+  <!-- CART PANEL -->
+  <div class="cart-panel">
+    <div class="cart-header">
+      <div class="cart-title">
+        🛒 <span data-lang="en">Your Order</span><span data-lang="es">Tu Pedido</span><span data-lang="pt">Seu Pedido</span>
+      </div>
+      <div class="cart-count" id="cartCount">0</div>
+    </div>
+    <div class="cart-body">
+      <div id="cartItems">
+        <div class="cart-empty">
+          <div class="cart-empty-icon">🥭</div>
+          <p>
+            <span data-lang="en">Your basket is empty.<br>Add some tropical goodness above!</span>
+            <span data-lang="es">Tu cesta está vacía.<br>¡Agrega frutas tropicales arriba!</span>
+            <span data-lang="pt">Sua cesta está vazia.<br>Adicione frutas tropicais acima!</span>
+          </p>
+        </div>
+      </div>
+      <div class="cart-total">
+        <div class="cart-total-label"><span data-lang="en">Total</span><span data-lang="es">Total</span><span data-lang="pt">Total</span></div>
+        <div class="cart-total-amount" id="cartTotal">$0.00</div>
+      </div>
+      <a id="waBtn" class="btn-whatsapp" href="#" target="_blank" onclick="return buildWALink(event)">
+        <svg class="wa-icon" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.553 4.103 1.522 5.835L.057 23.776a.5.5 0 0 0 .626.607l6.091-1.456A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.812 9.812 0 0 1-5.006-1.367l-.36-.213-3.724.891.908-3.63-.233-.372A9.79 9.79 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+        </svg>
+        <span>
+          <span data-lang="en">SEND ORDER VIA WHATSAPP</span>
+          <span data-lang="es">ENVIAR PEDIDO POR WHATSAPP</span>
+          <span data-lang="pt">ENVIAR PEDIDO PELO WHATSAPP</span>
+        </span>
+      </a>
+      <button class="btn-clear" onclick="clearCart()">
+        <span data-lang="en">Clear order</span><span data-lang="es">Limpiar pedido</span><span data-lang="pt">Limpar pedido</span>
+      </button>
+    </div>
+  </div>
+
+</div><!-- /.main -->
+
+<!-- ABOUT -->
+<div class="about-section">
+  <h2>
+    <span data-lang="en">Miami <span>Grown.</span> Fresh <span>Always.</span></span>
+    <span data-lang="es">Cultivado en <span>Miami.</span> Siempre <span>Fresco.</span></span>
+    <span data-lang="pt">Criado em <span>Miami.</span> Sempre <span>Fresco.</span></span>
+  </h2>
+  <p>
+    <span data-lang="en">Yuniert handpicks every fruit with care — selecting only the ripest mangoes, freshest coconuts, and finest tropical varieties South Florida has to offer. No middlemen, no warehouses, just farm-fresh flavor straight to your table.</span>
+    <span data-lang="es">Yuniert escoge cada fruta con cuidado — seleccionando solo los mangos más maduros, los cocos más frescos y las mejores variedades tropicales que ofrece el sur de Florida. Sin intermediarios, sin almacenes, solo sabor fresco directo a tu mesa.</span>
+    <span data-lang="pt">Yuniert seleciona cada fruta com cuidado — escolhendo apenas as mangas mais maduras, os cocos mais frescos e as melhores variedades tropicais que o sul da Flórida tem a oferecer. Sem intermediários, sem armazéns, só sabor fresco direto à sua mesa.</span>
+  </p>
+  <div class="feature-pills">
+    <div class="feature-pill">🥭 <span data-lang="en">Mangoes</span><span data-lang="es">Mangos</span><span data-lang="pt">Mangas</span></div>
+    <div class="feature-pill">🥥 <span data-lang="en">Coconuts</span><span data-lang="es">Cocos</span><span data-lang="pt">Cocos</span></div>
+    <div class="feature-pill">🌴 <span data-lang="en">Tropical Fruits</span><span data-lang="es">Frutas Tropicales</span><span data-lang="pt">Frutas Tropicais</span></div>
+    <div class="feature-pill">🚚 <span data-lang="en">Miami Delivery</span><span data-lang="es">Entrega en Miami</span><span data-lang="pt">Entrega em Miami</span></div>
+    <div class="feature-pill">⚖️ <span data-lang="en">By the Pound</span><span data-lang="es">Por Libra</span><span data-lang="pt">Por Libra</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">🥭 FRUTAS DE YUNIERT</div>
+  <div class="footer-addr">📍 Miami, FL · Miami-Dade County</div>
+  <div class="footer-links">
+    <a href="tel:+13053017163">📞 (305) 301-7163</a>
+    <a href="https://wa.me/13053017163" target="_blank">💬 WhatsApp</a>
+  </div>
+  <div class="footer-copy">
+    <span data-lang="en">© 2026 Frutas de Yuniert · Fresh Tropical Fruits · Miami, FL</span>
+    <span data-lang="es">© 2026 Frutas de Yuniert · Frutas Tropicales Frescas · Miami, FL</span>
+    <span data-lang="pt">© 2026 Frutas de Yuniert · Frutas Tropicais Frescas · Miami, FL</span>
+  </div>
+</footer>
+
+<!-- FLOAT WA -->
+<a class="wa-float" href="https://wa.me/13053017163?text=Hola!%20Me%20gustaría%20ordenar%20frutas%20🥭🥥" target="_blank" title="WhatsApp">
+  <svg style="width:28px;height:28px;fill:#fff" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.553 4.103 1.522 5.835L.057 23.776a.5.5 0 0 0 .626.607l6.091-1.456A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.812 9.812 0 0 1-5.006-1.367l-.36-.213-3.724.891.908-3.63-.233-.372A9.79 9.79 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+  </svg>
+</a>
+
+<script>
+  // ── STATE ──
+  const items = {}; // { fruitName: { qty, price, unit } }
+  let fulfillment = '';
+  let lang = 'en';
+
+  // ── LANG ──
+  function setLang(l, btn) {
+    lang = l;
+    document.getElementById('app').className = 'lang-' + l;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updateCart();
+  }
+
+  // ── QTY ──
+  function changeQty(btn, delta) {
+    const row = btn.closest('tr');
+    const valEl = row.querySelector('.qty-val');
+    const current = parseInt(valEl.textContent) || 0;
+    const next = Math.max(0, current + delta);
+    valEl.textContent = next;
+    const name = row.dataset.fruit;
+    const price = parseFloat(row.dataset.price);
+    const unit = row.dataset.unit || 'lb';
+    if (next === 0) delete items[name];
+    else items[name] = { qty: next, price, unit };
+    updateCart();
+  }
+
+  // ── FULFILLMENT ──
+  function selectFulfillment(el, type) {
+    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    fulfillment = type;
+    const addr = document.getElementById('addressField');
+    addr.style.display = (type === 'pickup') ? 'none' : '';
+    updateCart();
+  }
+
+  // ── CART ──
+  function updateCart() {
+    const keys = Object.keys(items);
+    const total = keys.reduce((s, k) => s + items[k].qty * items[k].price, 0);
+    document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+    document.getElementById('cartCount').textContent = keys.length;
+
+    const container = document.getElementById('cartItems');
+    if (keys.length === 0) {
+      container.innerHTML = `<div class="cart-empty">
+        <div class="cart-empty-icon">🥭</div>
+        <p>
+          <span data-lang="en">Your basket is empty.<br>Add some tropical goodness above!</span>
+          <span data-lang="es">Tu cesta está vacía.<br>¡Agrega frutas tropicales arriba!</span>
+          <span data-lang="pt">Sua cesta está vazia.<br>Adicione frutas tropicais acima!</span>
+        </p>
+      </div>`;
+    } else {
+      let html = '<div class="cart-items">';
+      keys.forEach(k => {
+        const it = items[k];
+        const subtotal = (it.qty * it.price).toFixed(2);
+        html += `<div class="cart-item">
+          <div class="cart-item-label">${k}<br><small style="color:#8A8070">${it.qty} ${it.unit} × $${it.price.toFixed(2)}</small></div>
+          <div class="cart-item-price">$${subtotal}</div>
+        </div>`;
+      });
+      if (fulfillment) {
+        const fLabel = fulfillment === 'delivery'
+          ? { en:'🚚 Home Delivery', es:'🚚 Entrega a Dom.', pt:'🚚 Entrega em Casa' }
+          : { en:'📍 Local Pickup', es:'📍 Recogida Local', pt:'📍 Retirada Local' };
+        html += `<div class="cart-item">
+          <div class="cart-item-label">${fLabel[lang]}</div>
+          <div class="cart-item-price" style="color:var(--green)">–</div>
+        </div>`;
+      }
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    // re-apply lang
+    document.querySelectorAll('[data-lang]').forEach(el => el.style.display='none');
+    document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el => el.style.display='inline');
+  }
+
+  function clearCart() {
+    Object.keys(items).forEach(k => delete items[k]);
+    document.querySelectorAll('.qty-val').forEach(el => el.textContent='0');
+    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    fulfillment = '';
+    updateCart();
+  }
+
+  function buildWALink(e) {
+    e.preventDefault();
+    const keys = Object.keys(items);
+    if (keys.length === 0) {
+      const msgs = { en:'Please add at least one fruit to your order!', es:'¡Por favor agrega al menos una fruta a tu pedido!', pt:'Por favor adicione pelo menos uma fruta ao seu pedido!' };
+      alert(msgs[lang]); return false;
+    }
+    const name    = document.getElementById('custName').value.trim();
+    const phone   = document.getElementById('custPhone').value.trim();
+    const address = document.getElementById('custAddress').value.trim();
+    const date    = document.getElementById('custDate').value;
+    const time    = document.getElementById('custTime').value;
+    const notes   = document.getElementById('custNotes').value.trim();
+    const total   = keys.reduce((s,k) => s + items[k].qty * items[k].price, 0);
+
+    const headers = {
+      en: '🥭 *NEW ORDER — Frutas de Yuniert*',
+      es: '🥭 *NUEVO PEDIDO — Frutas de Yuniert*',
+      pt: '🥭 *NOVO PEDIDO — Frutas de Yuniert*'
+    };
+    const labels = {
+      en: { total:'Total', name:'Name', phone:'Phone', address:'Address', date:'Date', time:'Time', notes:'Notes', pickup:'Local Pickup', delivery:'Home Delivery' },
+      es: { total:'Total', name:'Nombre', phone:'Teléfono', address:'Dirección', date:'Fecha', time:'Hora', notes:'Notas', pickup:'Recogida Local', delivery:'Entrega a Domicilio' },
+      pt: { total:'Total', name:'Nome', phone:'Telefone', address:'Endereço', date:'Data', time:'Horário', notes:'Observações', pickup:'Retirada Local', delivery:'Entrega em Casa' }
+    }[lang];
+
+    let msg = headers[lang] + '\n\n';
+    keys.forEach(k => {
+      const it = items[k];
+      msg += `• ${k}: ${it.qty} ${it.unit} × $${it.price.toFixed(2)} = $${(it.qty*it.price).toFixed(2)}\n`;
+    });
+    msg += `\n*${labels.total}:* $${total.toFixed(2)}\n`;
+    if (fulfillment) msg += `\n📦 ${fulfillment === 'delivery' ? labels.delivery : labels.pickup}`;
+    if (name)    msg += `\n👤 *${labels.name}:* ${name}`;
+    if (phone)   msg += `\n📞 *${labels.phone}:* ${phone}`;
+    if (address && fulfillment !== 'pickup') msg += `\n📍 *${labels.address}:* ${address}`;
+    if (date)    msg += `\n📅 *${labels.date}:* ${date}`;
+    if (time)    msg += `\n⏰ *${labels.time}:* ${time}`;
+    if (notes)   msg += `\n📝 *${labels.notes}:* ${notes}`;
+
+    window.open('https://wa.me/13053017163?text=' + encodeURIComponent(msg), '_blank');
+    return false;
+  }
+
+  // Init
+  document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display='inline');
+</script>
+</body>
+</html>
